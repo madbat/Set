@@ -1,7 +1,7 @@
 //  Copyright (c) 2015 Rob Rix. All rights reserved.
 
 /// Hashes a sequence of `Hashable` elements.
-internal func hashValues<S: SequenceType where S.Generator.Element: Hashable>(sequence: S) -> Int {
+internal func hashValues<S: Sequence>(_ sequence: S) -> Int where S.Iterator.Element: Hashable {
 	var h = sequence.reduce(0) { into, each in
 		var h = into + each.hashValue
 		h += (h << 10)

@@ -1,11 +1,11 @@
 //  Copyright (c) 2015 Rob Rix. All rights reserved.
 
 /// A multiset of elements and their counts.
-public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, Hashable, CustomStringConvertible, CustomDebugStringConvertible, CollectionType {
+public struct Multiset<Element: Hashable>: ExpressibleByArrayLiteral, Hashable, CustomStringConvertible, CustomDebugStringConvertible, Collection {
 	// MARK: Constructors
 
 	/// Constructs a `Multiset` with the elements of `sequence`.
-	public init<S: SequenceType where S.Generator.Element == Element>(_ sequence: S) {
+	public init<S: Sequence>(_ sequence: S) where S.Iterator.Element == Element {
 		self.init(values: [:])
 		extend(sequence)
 	}
@@ -30,7 +30,7 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, Hashable, Cu
 
 	/// The number of entries in the receiver.
 	public var count: Int {
-		return values.values.reduce(0, combine: +)
+		return values.values.reduce(0, +)
 	}
 
 	/// The number of distinct entries in the receiver.
@@ -47,44 +47,44 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, Hashable, Cu
 	// MARK: Primitive operations
 
 	/// True iff `element` is in the receiver, as defined by its hash and equality.
-	public func contains(element: Element) -> Bool {
+	public func contains(_ element: Element) -> Bool {
 		return count(element) > 0
 	}
 
 	/// Returns the number of occurrences of `element` in the receiver.
-	public func count(element: Element) -> Int {
+	public func count(_ element: Element) -> Int {
 		return values[element] ?? 0
 	}
 
 	/// Inserts `element` into the receiver.
-	public mutating func insert(element: Element) {
+	public mutating func insert(_ element: Element) {
 		values[element] = (values[element] ?? 0) + 1
 	}
 
 	/// Removes `element` from the receiver.
-	public mutating func remove(element: Element) {
-		if let value = values[element] where value > 1 {
+	public mutating func remove(_ element: Element) {
+		if let value = values[element], value > 1 {
 			values[element] = value - 1
 		} else {
-			values.removeValueForKey(element)
+			values.removeValue(forKey: element)
 		}
 	}
 
 	/// Removes all elements from the receiver, optionally maintaining its capacity (defaulting to false).
-	public mutating func removeAll(keepCapacity: Bool = false) {
-		values.removeAll(keepCapacity: keepCapacity)
+	public mutating func removeAll(_ keepCapacity: Bool = false) {
+		values.removeAll(keepingCapacity: keepCapacity)
 	}
 
 
 	// MARK: Algebraic operations
 
 	/// Returns the union of the receiver and `set`.
-	public func union(set: Multiset) -> Multiset {
+	public func union(_ set: Multiset) -> Multiset {
 		return self + set
 	}
 
 	/// Returns the intersection of the receiver and `set`.
-	public func intersection(set: Multiset) -> Multiset {
+	public func intersection(_ set: Multiset) -> Multiset {
 		return Multiset(values: countDistinct <= set.countDistinct ?
 			values.map { ($0, min($1, set.count($0))) }
 		:	set.values.map { ($0, min($1, self.count($0))) })
@@ -93,14 +93,14 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, Hashable, Cu
 	/// Returns the relative complement of `set` in `self`.
 	///
 	/// This is a new set with all elements from the receiver which are not contained in `set`.
-	public func complement(set: Multiset) -> Multiset {
+	public func complement(_ set: Multiset) -> Multiset {
 		return Multiset(values: values.lazy.map { ($0, $1 - set.count($0)) })
 	}
 
 	/// Returns the symmetric difference of `self` and `set`.
 	///
 	/// This is a new set with all elements that exist only in `self` or `set`, and not both.
-	public func difference(set: Multiset) -> Multiset {
+	public func difference(_ set: Multiset) -> Multiset {
 		return (set - self) + (self - set)
 	}
 
@@ -108,22 +108,22 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, Hashable, Cu
 	// MARK: Inclusion functions
 
 	/// True iff the receiver is a subset of (is included in) `set`.
-	public func subset(set: Multiset) -> Bool {
+	public func subset(_ set: Multiset) -> Bool {
 		return complement(set) == Multiset()
 	}
 
 	/// True iff the receiver is a subset of but not equal to `set`.
-	public func strictSubset(set: Multiset) -> Bool {
+	public func strictSubset(_ set: Multiset) -> Bool {
 		return subset(set) && self != set
 	}
 
 	/// True iff the receiver is a superset of (includes) `set`.
-	public func superset(set: Multiset) -> Bool {
+	public func superset(_ set: Multiset) -> Bool {
 		return set.subset(self)
 	}
 
 	/// True iff the receiver is a superset of but not equal to `set`.
-	public func strictSuperset(set: Multiset) -> Bool {
+	public func strictSuperset(_ set: Multiset) -> Bool {
 		return set.strictSubset(self)
 	}
 
@@ -131,23 +131,23 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, Hashable, Cu
 	// MARK: Higher-order functions
 
 	/// Returns a new set including only those elements `x` where `includeElement(x)` is true.
-	public func filter(includeElement: Element -> Bool) -> Multiset {
+	public func filter(_ includeElement: (Element) -> Bool) -> Multiset {
 		return Multiset(self.lazy.filter(includeElement))
 	}
 
 	/// Returns a new set with the result of applying `transform` to each element.
-	public func map<Result>(transform: Element -> Result) -> Multiset<Result> {
+	public func map<Result>(_ transform: (Element) -> Result) -> Multiset<Result> {
 		return flatMap { [transform($0)] }
 	}
 
 	/// Applies `transform` to each element and returns a new set which is the union of each resulting set.
-	public func flatMap<Result, S: SequenceType where S.Generator.Element == Result>(transform: Element -> S) -> Multiset<Result> {
+	public func flatMap<Result, S: Sequence>(_ transform: (Element) -> S) -> Multiset<Result> where S.Iterator.Element == Result {
 		return reduce([]) { $0 + transform($1) }
 	}
 
 	/// Combines each element of the receiver with an accumulator value using `combine`, starting with `initial`.
-	public func reduce<Into>(initial: Into, _ combine: (Into, Element) -> Into) -> Into {
-		return reduce(initial, combine: combine)
+	public func reduce<Into>(_ initial: Into, _ combine: (Into, Element) -> Into) -> Into {
+		return reduce(initial, combine)
 	}
 
 
@@ -160,13 +160,13 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, Hashable, Cu
 
 	// MARK: SequenceType
 
-	public typealias Generator = AnyGenerator<Element>
+	public typealias Iterator = AnyIterator<Element>
 
-	public func generate() -> Generator {
-		var generator = values.generate()
+	public func makeIterator() -> Iterator {
+		var generator = values.makeIterator()
 		let next = { generator.next() }
 		var current: (element: Element?, count: Int) = (nil, 0)
-		return anyGenerator {
+		return AnyIterator {
 			while current.count <= 0 {
 				if let (element, count) = next() {
 					current = (element, count)
@@ -174,7 +174,7 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, Hashable, Cu
 				}
 				else { return nil }
 			}
-			--current.count
+			current.count -= 1
 			return current.element
 		}
 	}
@@ -195,7 +195,7 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, Hashable, Cu
 	public subscript(index: Index) -> Element {
 		let (element, count) = values[index.from]
 		if index.delta > (count - 1) {
-			return self[MultisetIndex(from: index.from.successor(), delta: index.delta - count, max: self.count)]
+			return self[MultisetIndex(from: <#T##Dictionary corresponding to your index##Dictionary<<#Key: Hashable#>, Any>#>.index(after: index.from), from: <#Dictionary<Element, Int>.Index#>, delta: index.delta - count, max: self.count)]
 		} else {
 			return element
 		}
@@ -205,10 +205,10 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, Hashable, Cu
 	// MARK: ExtensibleCollectionType
 
 	/// In theory, reserve capacity for `n` elements. However, `Dictionary` does not implement `reserveCapacity`, so we just silently ignore it.
-	public func reserveCapacity(n: Multiset.Index.Distance) {}
+	public func reserveCapacity(_ n: Multiset.Index.Distance) {}
 
 	/// Inserts each element of `sequence` into the receiver.
-	public mutating func extend<S: SequenceType where S.Generator.Element == Element>(sequence: S) {
+	public mutating func extend<S: Sequence>(_ sequence: S) where S.Iterator.Element == Element {
 		// Note that this should just be for each in sequence; this is working around a compiler bug.
 		for each in AnySequence<Element>(sequence) {
 			insert(each)
@@ -216,7 +216,7 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, Hashable, Cu
 	}
 
 	/// Appends `element` onto the `Multiset`.
-	public mutating func append(element: Element) {
+	public mutating func append(_ element: Element) {
 		insert(element)
 	}
 
@@ -250,12 +250,12 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, Hashable, Cu
 	// MARK: Private
 
 	/// Constructs a `Multiset` with a dictionary of `values`.
-	private init(values: [Element: Int]) {
+	fileprivate init(values: [Element: Int]) {
 		self.values = values
 	}
 
 	/// Constructs a `Multiset` with a sequence of element/count pairs.
-	private init<S: SequenceType where S.Generator.Element == Dictionary<Element, Int>.Element>(values: S) {
+	fileprivate init<S: Sequence>(values: S) where S.Iterator.Element == Dictionary<Element, Int>.Element {
 		self.values = [:]
 		for (element, count) in values {
 			if count > 0 { self.values[element] = count }
@@ -263,14 +263,15 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, Hashable, Cu
 	}
 
 	/// Counts indexed by value.
-	private var values: Dictionary<Element, Int>
+	fileprivate var values: Dictionary<Element, Int>
 }
 
 
 // MARK: - Operators
 
 /// Returns a new set with all elements from `set` and `other`.
-public func + <Element, S: SequenceType where S.Generator.Element == Element> (var set: Multiset<Element>, other: S) -> Multiset<Element> {
+public func + <Element, S: Sequence> (set: Multiset<Element>, other: S) -> Multiset<Element> where S.Iterator.Element == Element {
+	var set = set
 	for element in other {
 		set.insert(element)
 	}
@@ -278,7 +279,7 @@ public func + <Element, S: SequenceType where S.Generator.Element == Element> (v
 }
 
 /// Extends a `set` with the elements of a `sequence`.
-public func += <S: SequenceType> (inout set: Multiset<S.Generator.Element>, sequence: S) {
+public func += <S: Sequence> (set: inout Multiset<S.Iterator.Element>, sequence: S) {
 	set.extend(sequence)
 }
 
@@ -289,13 +290,13 @@ public func - <Element> (set: Multiset<Element>, other: Multiset<Element>) -> Mu
 }
 
 /// Removes all elements in `other` from `set`.
-public func -= <Element> (inout set: Multiset<Element>, other: Multiset<Element>) {
+public func -= <Element> (set: inout Multiset<Element>, other: Multiset<Element>) {
 	set = set.complement(other)
 }
 
 
 /// Intersects with `set` with `other`.
-public func &= <Element> (inout set: Multiset<Element>, other: Multiset<Element>) {
+public func &= <Element> (set: inout Multiset<Element>, other: Multiset<Element>) {
 	set = set.intersection(other)
 }
 
@@ -312,7 +313,7 @@ public func == <Element> (a: Multiset<Element>, b: Multiset<Element>) -> Bool {
 
 
 /// The index for values of a multiset.
-public struct MultisetIndex<Element: Hashable>: ForwardIndexType, Comparable {
+public struct MultisetIndex<Element: Hashable>: Comparable {
 	// MARK: ForwardIndexType
 
 	public func successor() -> MultisetIndex {
@@ -322,9 +323,9 @@ public struct MultisetIndex<Element: Hashable>: ForwardIndexType, Comparable {
 
 	// MARK: Private
 
-	private let from: DictionaryIndex<Element, Int>
-	private let delta: Int
-	private let max: Int
+	fileprivate let from: DictionaryIndex<Element, Int>
+	fileprivate let delta: Int
+	fileprivate let max: Int
 }
 
 

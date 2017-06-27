@@ -11,7 +11,7 @@ public struct PredicateSet<Element: Hashable> {
 	}
 	
 	/// Constructs a `PredicateSet` from a boolean predicate.
-	public init(_ predicate: Element -> Bool) {
+	public init(_ predicate: @escaping (Element) -> Bool) {
 		self.predicate = predicate
 	}
 		
@@ -29,13 +29,13 @@ public struct PredicateSet<Element: Hashable> {
 	// MARK: Properties
 	
 	/// The set's predicate.
-	private let predicate: Element -> Bool
+	fileprivate let predicate: (Element) -> Bool
 	
 	
 	// MARK: Primitive operations
 	
 	/// True iff predicate is true for `element`. (In other words, whether `element` is contained within the possibly infinite PredicateSet.)
-	public func contains(element: Element) -> Bool {
+	public func contains(_ element: Element) -> Bool {
 		return predicate(element)
 	}
 	
@@ -43,22 +43,22 @@ public struct PredicateSet<Element: Hashable> {
 	// MARK: Algebraic operations
 	
 	/// Returns the union of the receiver and `set`.
-	public func union(set: PredicateSet) -> PredicateSet {
+	public func union(_ set: PredicateSet) -> PredicateSet {
 		return PredicateSet { self.predicate($0) || set.contains($0) }
 	}
 	
 	/// Returns the intersection of the receiver and `set`.
-	public func intersection(set: PredicateSet) -> PredicateSet {
+	public func intersection(_ set: PredicateSet) -> PredicateSet {
 		return PredicateSet { self.predicate($0) && set.contains($0) }
 	}
 	
 	/// Returns the relative complement of the receiver and `set`.
-	public func complement(set: PredicateSet) -> PredicateSet {
+	public func complement(_ set: PredicateSet) -> PredicateSet {
 		return PredicateSet { self.predicate($0) && !set.contains($0) }
 	}
 	
 	/// Returns the symmetric difference of the receiver and `set`.
-	public func difference(set: PredicateSet) -> PredicateSet {
+	public func difference(_ set: PredicateSet) -> PredicateSet {
 		return PredicateSet { !(self.predicate($0) && set.contains($0)) }
 	}
 }
