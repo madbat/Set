@@ -1,0 +1,443 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		"Set::SetPackageTests::ProductTarget" /* SetPackageTests */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = OBJ_55 /* Build configuration list for PBXAggregateTarget "SetPackageTests" */;
+			buildPhases = (
+			);
+			dependencies = (
+				OBJ_58 /* PBXTargetDependency */,
+			);
+			name = SetPackageTests;
+			productName = SetPackageTests;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		OBJ_32 /* MultisetAlgebraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* MultisetAlgebraTests.swift */; };
+		OBJ_33 /* MultisetCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* MultisetCollectionTests.swift */; };
+		OBJ_34 /* MultisetCountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* MultisetCountTests.swift */; };
+		OBJ_35 /* MultisetHigherOrderFunctionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* MultisetHigherOrderFunctionTests.swift */; };
+		OBJ_36 /* MultisetInclusionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* MultisetInclusionTests.swift */; };
+		OBJ_37 /* MultisetInitializerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* MultisetInitializerTests.swift */; };
+		OBJ_38 /* MultisetPrintableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* MultisetPrintableTests.swift */; };
+		OBJ_39 /* MultisetSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* MultisetSequenceTests.swift */; };
+		OBJ_40 /* PredicateSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* PredicateSetTests.swift */; };
+		OBJ_42 /* Set.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Set::Set::Product" /* Set.framework */; };
+		OBJ_49 /* Hashing.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Hashing.swift */; };
+		OBJ_50 /* Multiset.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Multiset.swift */; };
+		OBJ_51 /* PredicateSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* PredicateSet.swift */; };
+		OBJ_52 /* Printing.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Printing.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A65546AD1F02E06C00D9ADAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Set::Set";
+			remoteInfo = Set;
+		};
+		A65546AE1F02E06D00D9ADAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Set::SetTests";
+			remoteInfo = SetTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		OBJ_10 /* Multiset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multiset.swift; sourceTree = "<group>"; };
+		OBJ_11 /* PredicateSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredicateSet.swift; sourceTree = "<group>"; };
+		OBJ_12 /* Printing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Printing.swift; sourceTree = "<group>"; };
+		OBJ_15 /* MultisetAlgebraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultisetAlgebraTests.swift; sourceTree = "<group>"; };
+		OBJ_16 /* MultisetCollectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultisetCollectionTests.swift; sourceTree = "<group>"; };
+		OBJ_17 /* MultisetCountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultisetCountTests.swift; sourceTree = "<group>"; };
+		OBJ_18 /* MultisetHigherOrderFunctionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultisetHigherOrderFunctionTests.swift; sourceTree = "<group>"; };
+		OBJ_19 /* MultisetInclusionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultisetInclusionTests.swift; sourceTree = "<group>"; };
+		OBJ_20 /* MultisetInitializerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultisetInitializerTests.swift; sourceTree = "<group>"; };
+		OBJ_21 /* MultisetPrintableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultisetPrintableTests.swift; sourceTree = "<group>"; };
+		OBJ_22 /* MultisetSequenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultisetSequenceTests.swift; sourceTree = "<group>"; };
+		OBJ_23 /* PredicateSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredicateSetTests.swift; sourceTree = "<group>"; };
+		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		OBJ_9 /* Hashing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hashing.swift; sourceTree = "<group>"; };
+		"Set::Set::Product" /* Set.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Set.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"Set::SetTests::Product" /* SetTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = SetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		OBJ_41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_42 /* Set.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_53 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		OBJ_13 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_14 /* SetTests */,
+			);
+			name = Tests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_14 /* SetTests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_15 /* MultisetAlgebraTests.swift */,
+				OBJ_16 /* MultisetCollectionTests.swift */,
+				OBJ_17 /* MultisetCountTests.swift */,
+				OBJ_18 /* MultisetHigherOrderFunctionTests.swift */,
+				OBJ_19 /* MultisetInclusionTests.swift */,
+				OBJ_20 /* MultisetInitializerTests.swift */,
+				OBJ_21 /* MultisetPrintableTests.swift */,
+				OBJ_22 /* MultisetSequenceTests.swift */,
+				OBJ_23 /* PredicateSetTests.swift */,
+			);
+			name = SetTests;
+			path = Tests/SetTests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_24 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				"Set::SetTests::Product" /* SetTests.xctest */,
+				"Set::Set::Product" /* Set.framework */,
+			);
+			name = Products;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		OBJ_5 /*  */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_6 /* Package.swift */,
+				OBJ_7 /* Sources */,
+				OBJ_13 /* Tests */,
+				OBJ_24 /* Products */,
+			);
+			name = "";
+			sourceTree = "<group>";
+		};
+		OBJ_7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_8 /* Set */,
+			);
+			name = Sources;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_8 /* Set */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_9 /* Hashing.swift */,
+				OBJ_10 /* Multiset.swift */,
+				OBJ_11 /* PredicateSet.swift */,
+				OBJ_12 /* Printing.swift */,
+			);
+			name = Set;
+			path = Sources/Set;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		"Set::Set" /* Set */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_45 /* Build configuration list for PBXNativeTarget "Set" */;
+			buildPhases = (
+				OBJ_48 /* Sources */,
+				OBJ_53 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Set;
+			productName = Set;
+			productReference = "Set::Set::Product" /* Set.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"Set::SetTests" /* SetTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_28 /* Build configuration list for PBXNativeTarget "SetTests" */;
+			buildPhases = (
+				OBJ_31 /* Sources */,
+				OBJ_41 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_43 /* PBXTargetDependency */,
+			);
+			name = SetTests;
+			productName = SetTests;
+			productReference = "Set::SetTests::Product" /* SetTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		OBJ_1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 9999;
+			};
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "Set" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = OBJ_5 /*  */;
+			productRefGroup = OBJ_24 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				"Set::SetTests" /* SetTests */,
+				"Set::Set" /* Set */,
+				"Set::SetPackageTests::ProductTarget" /* SetPackageTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		OBJ_31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_32 /* MultisetAlgebraTests.swift in Sources */,
+				OBJ_33 /* MultisetCollectionTests.swift in Sources */,
+				OBJ_34 /* MultisetCountTests.swift in Sources */,
+				OBJ_35 /* MultisetHigherOrderFunctionTests.swift in Sources */,
+				OBJ_36 /* MultisetInclusionTests.swift in Sources */,
+				OBJ_37 /* MultisetInitializerTests.swift in Sources */,
+				OBJ_38 /* MultisetPrintableTests.swift in Sources */,
+				OBJ_39 /* MultisetSequenceTests.swift in Sources */,
+				OBJ_40 /* PredicateSetTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_48 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_49 /* Hashing.swift in Sources */,
+				OBJ_50 /* Multiset.swift in Sources */,
+				OBJ_51 /* PredicateSet.swift in Sources */,
+				OBJ_52 /* Printing.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		OBJ_43 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Set::Set" /* Set */;
+			targetProxy = A65546AD1F02E06C00D9ADAA /* PBXContainerItemProxy */;
+		};
+		OBJ_58 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Set::SetTests" /* SetTests */;
+			targetProxy = A65546AE1F02E06D00D9ADAA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		OBJ_29 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Set.xcodeproj/SetTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = SetTests;
+			};
+			name = Debug;
+		};
+		OBJ_3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USE_HEADERMAP = NO;
+			};
+			name = Debug;
+		};
+		OBJ_30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Set.xcodeproj/SetTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = SetTests;
+			};
+			name = Release;
+		};
+		OBJ_4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = s;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				USE_HEADERMAP = NO;
+			};
+			name = Release;
+		};
+		OBJ_46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Set.xcodeproj/Set_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Set;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = Set;
+			};
+			name = Debug;
+		};
+		OBJ_47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Set.xcodeproj/Set_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Set;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = Set;
+			};
+			name = Release;
+		};
+		OBJ_56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		OBJ_57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		OBJ_2 /* Build configuration list for PBXProject "Set" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_3 /* Debug */,
+				OBJ_4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_28 /* Build configuration list for PBXNativeTarget "SetTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_29 /* Debug */,
+				OBJ_30 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_45 /* Build configuration list for PBXNativeTarget "Set" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_46 /* Debug */,
+				OBJ_47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_55 /* Build configuration list for PBXAggregateTarget "SetPackageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_56 /* Debug */,
+				OBJ_57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = OBJ_1 /* Project object */;
+}
