@@ -45,7 +45,7 @@ final class PredicateSetTests: XCTestCase {
 }
 
 // MARK: Fixtures
-func isInt(number: Float) -> Bool {
+func isInt(_ number: Float) -> Bool {
 	return floor(number) == number
 }
 

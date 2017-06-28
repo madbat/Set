@@ -3,18 +3,18 @@
 import XCTest
 import Set
 
-final class TestElement: NSObject, CustomDebugStringConvertible {
+final class TestElement: NSObject {
 
 	// MARK: CustomStringConvertible
 	
 	override var description: String {
-		return __FUNCTION__
+        return #function
 	}
 	
 	// MARK: CustomDebugStringConvertible
 
 	override var debugDescription: String {
-		return __FUNCTION__
+        return #function
 	}
 }
 

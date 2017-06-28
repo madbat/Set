@@ -4,11 +4,11 @@ import XCTest
 import Set
 
 final class MultisetSequenceTests: XCTestCase {
-	func testGeneratorProducesEveryElement() {
-		XCTAssertEqual(Array(Multiset(0, 1, 2)).sort(), [ 0, 1, 2 ])
+	func testIteratorProducesEveryElement() {
+        XCTAssertEqual(Array(Multiset(0, 1, 2)).sorted(), [ 0, 1, 2 ])
 	}
 
-	func testGeneratorProducesElementsByMultiplicity() {
+	func testIteratorProducesElementsByMultiplicity() {
 		XCTAssertEqual(Multiset(1, 1, 1, 2, 2, 3).reduce(0, +), 10)
 	}
 }
