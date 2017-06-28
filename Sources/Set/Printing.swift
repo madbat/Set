@@ -2,7 +2,7 @@
 
 /// Describes a sequence as a set.
 internal func describe<S: Sequence>(_ sequence: S) -> String {
-	return mapDescription(sequence, transform: toString)
+    return mapDescription(sequence, transform: toString)
 }
 
 /// Debug-describes a sequence as a set.
